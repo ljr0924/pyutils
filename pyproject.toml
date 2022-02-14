@@ -1,0 +1,18 @@
+[tool.pydantic-pycharm-plugin.parsable-types]
+
+# str field may parse int and float
+str = ["int", "float"]
+
+# datetime.datetime field may parse int
+"datetime.datetime" = [ "int" ]
+
+# your_module.your_type field may parse str
+"your_module.your_type" = [ "str" ]
+
+[tool.pydantic-pycharm-plugin]
+# You can set higlith level (default is "warning")
+# You can select it from "warning",  "weak_warning", "disable"
+parsable-type-highlight = "warning"
+
+## If you set acceptable-type-highlight then, you have to set it at same depth.
+acceptable-type-highlight = "disable"

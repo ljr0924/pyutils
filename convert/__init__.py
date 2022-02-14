@@ -8,7 +8,7 @@
 from collections import defaultdict
 
 
-def generate_tree(sources, keep_pid=False, **kwargs):
+def generate_tree(sources, keep_pid=False, pid_field_name="parent_id"):
     """
     无限级分类 平铺结构转状树结构
     [{"id": 1, "parent_id":0, **extra_data}, {"id": 2, "parent_id":1, **extra_data}]
@@ -16,13 +16,9 @@ def generate_tree(sources, keep_pid=False, **kwargs):
     [{"id": 1, **extra_data, "list": [{"id": 2, **extra_data}]}]
     :param sources:   [{"id": 1, "parent_id":0, **extra_data}, {"id": 2, "parent_id":1, **extra_data}]
     :param keep_pid:  是否保留父id
+    :param pid_field_name: 父id字段名称，默认为parent_id
     :return: [{"id": 1, **extra_data, "list": [{"id": 2, **extra_data}]}]
     """
-
-    # 可选父id字段名
-    pid_field_name = "parent_id"
-    if "pid_field_name" in kwargs:
-        pid_field_name = kwargs["pid_field_name"]
 
     pid_2_source = defaultdict(list)
     for source in sources:
@@ -42,3 +38,7 @@ def generate_tree(sources, keep_pid=False, **kwargs):
         return tree
 
     return _recursion(0)
+
+if __name__ == '__main__':
+    source = [{"id": 1, "parent_id":0, "name":"111"}, {"id": 2, "parent_id":1, "name":"222"}]
+    print(generate_tree(sources=source))
