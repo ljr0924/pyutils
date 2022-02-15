@@ -27,8 +27,7 @@ def generate_tree(sources, keep_pid=False, pid_field_name="parent_id"):
     def _recursion(parent_id):
         tree = []
         for item in pid_2_source[parent_id]:
-            data = {}
-            data.update(**item)
+            data = dict(**item)
             child_list = _recursion(item["id"])
             if not keep_pid:
                 del data[pid_field_name]
