@@ -38,6 +38,7 @@ def generate_tree(sources, keep_pid=False, pid_field_name="parent_id"):
 
     return _recursion(0)
 
+
 if __name__ == '__main__':
-    source = [{"id": 1, "parent_id":0, "name":"111"}, {"id": 2, "parent_id":1, "name":"222"}]
-    print(generate_tree(sources=source))
+    s = [{"id": 1, "parent_id": 0, "name": "111"}, {"id": 2, "parent_id": 1, "name": "222"}]
+    print(generate_tree(sources=s))
