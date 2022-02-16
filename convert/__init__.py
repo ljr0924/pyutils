@@ -8,7 +8,7 @@
 from collections import defaultdict
 
 
-def generate_tree(sources, keep_pid=False, pid_field_name="parent_id"):
+def flat_2_tree(sources, keep_pid=False, pid_field_name="parent_id"):
     """
     无限级分类 平铺结构转状树结构
     [{"id": 1, "parent_id":0, **extra_data}, {"id": 2, "parent_id":1, **extra_data}]
